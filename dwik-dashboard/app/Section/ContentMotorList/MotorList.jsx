@@ -9,17 +9,19 @@ export default function MotorList() {
 
   useEffect(() => {
     axiosInstance
-      .get("/motorbikes")
+      .get("/motors")
       .then((response) => {
         setMotorbikes(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         console.error("Error fetching motorbikes:", error);
+        console.log(response.data);
       });
   }, []);
 
   return (
-    <div className="motor-list">
+    <div className="motor-list grid grid-cols-4 gap-4">
       {motorbikes.map((motorbike) => (
         <Card
           key={motorbike.id}
